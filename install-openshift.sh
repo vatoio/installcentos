@@ -44,12 +44,12 @@ if [ "$INTERACTIVE" = "true" ]; then
 		export IP="$choice";
 	fi
 	
-	read -rp "Node1 Ip: ($IP): " choice;
+	read -rp "Node1 Ip: ($IP_NODE_1): " choice;
 	if [ "$choice" != "" ] ; then
 		export IP_NODE_1="$choice";
 	fi
 	
-	read -rp "Node2 Ip: ($IP): " choice;
+	read -rp "Node2 Ip: ($IP_NODE_2): " choice;
 	if [ "$choice" != "" ] ; then
 		export IP_NODE_2="$choice";
 	fi
