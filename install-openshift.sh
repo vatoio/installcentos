@@ -11,6 +11,8 @@ export PASSWORD=${PASSWORD:=password}
 export VERSION=${VERSION:="4.1"}
 export SCRIPT_REPO=${SCRIPT_REPO:="https://raw.githubusercontent.com/vatoio/openshift-centos/master"}
 export IP=${IP:="$(ip route get 8.8.8.8 | awk '{print $NF; exit}')"}
+export IP_NODE_1=$(nextip $IP)
+export IP_NODE_2=$(nextip $IP_NODE_1)
 export API_PORT=${API_PORT:="8443"}
 export LETSENCRYPT=${LETSENCRYPT:="false"}
 export MAIL=${MAIL:="developer@vato.vn"}
@@ -36,11 +38,22 @@ if [ "$INTERACTIVE" = "true" ]; then
 	if [ "$choice" != "" ] ; then
 		export VERSION="$choice";
 	fi
-	read -rp "IP: ($IP): " choice;
+	
+	read -rp "Master Node Ip: ($IP): " choice;
 	if [ "$choice" != "" ] ; then
 		export IP="$choice";
 	fi
-
+	
+	read -rp "Node1 Ip: ($IP): " choice;
+	if [ "$choice" != "" ] ; then
+		export IP_NODE_1="$choice";
+	fi
+	
+	read -rp "Node2 Ip: ($IP): " choice;
+	if [ "$choice" != "" ] ; then
+		export IP_NODE_2="$choice";
+	fi
+	
 	read -rp "API Port: ($API_PORT): " choice;
 	if [ "$choice" != "" ] ; then
 		export API_PORT="$choice";
@@ -245,6 +258,14 @@ if [ "$PVS" = "true" ]; then
 	done
 	rm oc_vol.yaml
 fi
+
+nextip(){
+    IP_VAR=$1
+    IP_HEX=$(printf '%.2X%.2X%.2X%.2X\n' `echo $IP_VAR | sed -e 's/\./ /g'`)
+    NEXT_IP_HEX=$(printf %.8X `echo $(( 0x$IP_HEX + 1 ))`)
+    NEXT_IP=$(printf '%d.%d.%d.%d\n' `echo $NEXT_IP_HEX | sed -r 's/(..)/0x\1 /g'`)
+    echo "$NEXT_IP"
+}
 
 echo "******"
 echo "* Your console is https://console.$DOMAIN:$API_PORT"
