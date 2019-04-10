@@ -2,6 +2,14 @@
 
 ## see: https://youtu.be/aqXSbDZggK4
 
+nextip(){
+    IP_VAR=$1
+    IP_HEX=$(printf '%.2X%.2X%.2X%.2X\n' `echo $IP_VAR | sed -e 's/\./ /g'`)
+    NEXT_IP_HEX=$(printf %.8X `echo $(( 0x$IP_HEX + 1 ))`)
+    NEXT_IP=$(printf '%d.%d.%d.%d\n' `echo $NEXT_IP_HEX | sed -r 's/(..)/0x\1 /g'`)
+    echo "$NEXT_IP"
+}
+
 ## Default variables to use
 export INTERACTIVE=${INTERACTIVE:="true"}
 export PVS=${INTERACTIVE:="true"}
@@ -264,14 +272,6 @@ if [ "$PVS" = "true" ]; then
 	done
 	rm oc_vol.yaml
 fi
-
-nextip(){
-    IP_VAR=$1
-    IP_HEX=$(printf '%.2X%.2X%.2X%.2X\n' `echo $IP_VAR | sed -e 's/\./ /g'`)
-    NEXT_IP_HEX=$(printf %.8X `echo $(( 0x$IP_HEX + 1 ))`)
-    NEXT_IP=$(printf '%d.%d.%d.%d\n' `echo $NEXT_IP_HEX | sed -r 's/(..)/0x\1 /g'`)
-    echo "$NEXT_IP"
-}
 
 echo "******"
 echo "* Your console is https://console.$DOMAIN:$API_PORT"
