@@ -1,86 +1,24 @@
-Install RedHat OKD 4.1 on your own server.  For a local only install, it is suggested that you use CDK or MiniShift instead of this repo.  This install method is targeted for 3 node worker, 1 node master that has a long life.
+Install RedHat OKD 4.1 on your own server.  For a local only install, it is suggested that you use CDK or MiniShift instead of this repo.
 
-This repository is a set of scripts that will allow you easily install the latest version (4.1) of OKD in a single node fashion.  What that means is that all of the services required for OKD to function (master, node, etcd, etc.) will all be installed on a single host.  The script supports a custom hostname which you can provide using the interactive mode.
-
-**If you are wanting to install OCP on RDO (OpenStack)**
-
-Michel Peterson has created a wrapper script in his repo that will do all the heavy lifting for you. Check it out!  
-
-https://github.com/mpeterson/rdo-openshift-tools
-
+This install method is targeted for 3 node worker, 1 node master that has a long life.
 
 **Please do use a clean CentOS system, the script installs all necesary tools and packages including Ansible, container runtime, etc.**
 
-> **Warning about Let's Encrypt setup available on this project:**
-> Let's Encrypt only works if the IP is using publicly accessible IP and custom certificates."
-> This feature doesn't work with OpenShift CLI for now.
-
 ## Installation
 
-1. Create a VM as explained in https://www.youtube.com/watch?v=ZkFIozGY0IA (this video) by Grant Shipley
-
-2. Clone this repo
+1. Clone this repo
 
 ```
 git clone https://github.com/vatoio/openshift-centos.git
 ```
 
-3. Execute the installation script
+2. ssh-keygen and ssh-copy-id for each node and cluster, config 00-config-env.sh
+
+3. execute 00-config-env.sh and 01-config-for-all.sh for all worker and master
+
+4. execute the installation script on master
 
 ```
 cd openshift-centos
 ./install-openshift.sh
 ```
-
-## Automation
-1. Define mandatory variables for the installation process
-
-```
-# Domain name to access the cluster
-$ export DOMAIN=<public ip address>.nip.io
-
-# User created after installation
-$ export USERNAME=<current user name>
-
-# Password for the user
-$ export PASSWORD=password
-```
-
-2. Define optional variables for the installation process
-
-```
-# Instead of using loopback, setup DeviceMapper on this disk.
-# !! All data on the disk will be wiped out !!
-$ export DISK="/dev/sda"
-```
-
-3. Run the automagic installation script as root with the environment variable in place:
-
-```
-curl https://raw.githubusercontent.com/vatoio/openshift-centos/master/install-openshift.sh | INTERACTIVE=false /bin/bash
-```
-
-## Development
-
-For development it's possible to switch the script repo
-
-```
-# Change location of source repository
-$ export SCRIPT_REPO="https://raw.githubusercontent.com/vatoio/openshift-centos/master"
-$ curl $SCRIPT_REPO/install-openshift.sh | /bin/bash
-```
-
-## Testing
-
-The script is tested using the tooling in the `validate` directory.
-
-To use the tooling, it's required to create file `validate/env.sh` with the DigitalOcean API key
-
-```
-export DIGITALOCEAN_TOKEN=""
-```
-
-and then run `start.sh` to start the provisioning. Once the ssh is connected to the server, the
-script will atatch to the `tmux` session running Ansible installer.
-
-To destroy the infrastructure, run the `stop.sh` script.
