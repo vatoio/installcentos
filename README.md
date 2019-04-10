@@ -1,6 +1,6 @@
-Install RedHat OKD 3.11 on your own server.  For a local only install, it is suggested that you use CDK or MiniShift instead of this repo.  This install method is targeted for a single node cluster that has a long life.
+Install RedHat OKD 4.1 on your own server.  For a local only install, it is suggested that you use CDK or MiniShift instead of this repo.  This install method is targeted for 3 node cluster that has a long life.
 
-This repository is a set of scripts that will allow you easily install the latest version (3.11) of OKD in a single node fashion.  What that means is that all of the services required for OKD to function (master, node, etcd, etc.) will all be installed on a single host.  The script supports a custom hostname which you can provide using the interactive mode.
+This repository is a set of scripts that will allow you easily install the latest version (4.1) of OKD in a single node fashion.  What that means is that all of the services required for OKD to function (master, node, etcd, etc.) will all be installed on a single host.  The script supports a custom hostname which you can provide using the interactive mode.
 
 **If you are wanting to install OCP on RDO (OpenStack)**
 
@@ -22,13 +22,13 @@ https://github.com/mpeterson/rdo-openshift-tools
 2. Clone this repo
 
 ```
-git clone https://github.com/gshipley/installcentos.git
+git clone https://github.com/vatoio/openshift-centos.git
 ```
 
 3. Execute the installation script
 
 ```
-cd installcentos
+cd openshift-centos
 ./install-openshift.sh
 ```
 
@@ -57,7 +57,7 @@ $ export DISK="/dev/sda"
 3. Run the automagic installation script as root with the environment variable in place:
 
 ```
-curl https://raw.githubusercontent.com/gshipley/installcentos/master/install-openshift.sh | INTERACTIVE=false /bin/bash
+curl https://raw.githubusercontent.com/vatoio/openshift-centos/master/install-openshift.sh | INTERACTIVE=false /bin/bash
 ```
 
 ## Development
@@ -66,7 +66,7 @@ For development it's possible to switch the script repo
 
 ```
 # Change location of source repository
-$ export SCRIPT_REPO="https://raw.githubusercontent.com/gshipley/installcentos/master"
+$ export SCRIPT_REPO="https://raw.githubusercontent.com/vatoio/openshift-centos/master"
 $ curl $SCRIPT_REPO/install-openshift.sh | /bin/bash
 ```
 
