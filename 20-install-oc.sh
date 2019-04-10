@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# install the packages for Ansible
+yum -y --enablerepo=epel install pyOpenSSL
+
+curl -o ansible.rpm https://releases.ansible.com/ansible/rpm/release/epel-7-x86_64/ansible-2.7.8-1.el7.ans.noarch.rpm
+yum -y --enablerepo=epel install ansible.rpm
+
+[ ! -d openshift-ansible ] && git clone https://github.com/openshift/openshift-ansible.git -b release-${VERSION} --depth=1
+
 mkdir -p /etc/origin/master/
 touch /etc/origin/master/htpasswd
 
