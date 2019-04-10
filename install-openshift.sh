@@ -13,6 +13,7 @@ export SCRIPT_REPO=${SCRIPT_REPO:="https://raw.githubusercontent.com/vatoio/open
 export IP=${IP:="$(ip route get 8.8.8.8 | awk '{print $NF; exit}')"}
 export IP_NODE_1=$(nextip $IP)
 export IP_NODE_2=$(nextip $IP_NODE_1)
+export IP_NODE_3=$(nextip $IP_NODE_2)
 export API_PORT=${API_PORT:="8443"}
 export LETSENCRYPT=${LETSENCRYPT:="false"}
 export MAIL=${MAIL:="developer@vato.vn"}
@@ -50,6 +51,11 @@ if [ "$INTERACTIVE" = "true" ]; then
 	fi
 	
 	read -rp "Node2 Ip: ($IP_NODE_2): " choice;
+	if [ "$choice" != "" ] ; then
+		export IP_NODE_2="$choice";
+	fi
+	
+	read -rp "Node3 Ip: ($IP_NODE_2): " choice;
 	if [ "$choice" != "" ] ; then
 		export IP_NODE_2="$choice";
 	fi
