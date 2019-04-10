@@ -1,4 +1,4 @@
-Install RedHat OKD 4.1 on your own server.  For a local only install, it is suggested that you use CDK or MiniShift instead of this repo.
+Install RedHat OKD 4.0 on your own server.  For a local only install, it is suggested that you use CDK or MiniShift instead of this repo.
 
 This install method is targeted for 3 node worker, 1 node master that has a long life.
 

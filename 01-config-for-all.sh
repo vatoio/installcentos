@@ -10,7 +10,7 @@ export USERNAME="root"
 export PASSWORD="put-your-password-here"
 
 # openshift-ansible / openshift
-export VERSION="4.1"
+export VERSION="4.0"
 export METRICS="True"
 export LOGGING="True"
 
