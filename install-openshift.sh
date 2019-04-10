@@ -55,9 +55,9 @@ if [ "$INTERACTIVE" = "true" ]; then
 		export IP_NODE_2="$choice";
 	fi
 	
-	read -rp "Node3 Ip: ($IP_NODE_2): " choice;
+	read -rp "Node3 Ip: ($IP_NODE_3): " choice;
 	if [ "$choice" != "" ] ; then
-		export IP_NODE_2="$choice";
+		export IP_NODE_3="$choice";
 	fi
 	
 	read -rp "API Port: ($API_PORT): " choice;
