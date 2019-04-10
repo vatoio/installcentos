@@ -6,7 +6,9 @@ This install method is targeted for 3 node worker, 1 node master that has a long
 
 ## Installation
 
-1. Download & unzip
+1. ssh-keygen and ssh-copy-id for each node and cluster
+
+3. Download & unzip
 
 ```
 curl -LOk https://github.com/vatoio/openshift-centos/archive/master.zip
@@ -14,13 +16,6 @@ yum install -y unzip
 unzip master.zip
 ```
 
-2. ssh-keygen and ssh-copy-id for each node and cluster, config 00-config-env.sh
+3. execute `01-config-for-all.sh` for all worker and master
 
-3. execute 00-config-env.sh and 01-config-for-all.sh for all worker and master
-
-4. execute the installation script on master
-
-```
-cd openshift-centos
-./install-openshift.sh
-```
+4. execute the installation `10-install-oc.sh` script on master

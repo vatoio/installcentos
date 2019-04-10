@@ -1,14 +1,35 @@
+# First you should create ssh key for each node , then ssh-copy-id all node together
+export IP_MASTER="192.168.22.100"
+export IP_WORKER_1="192.168.22.101"
+export IP_WORKER_2="192.168.22.102"
+export IP_WORKER_3="192.168.22.103"
+
+export DOMAIN=$(curl -s ipinfo.io/ip).nip.io
+export API_PORT="8443"
+export USERNAME="root"
+export PASSWORD="put-your-password-here"
+
+# openshift-ansible / openshift
+export VERSION="4.1"
+export METRICS="True"
+export LOGGING="True"
+
+# optional
+export DISK="/dev/sda"
+
+# ======== WARNING - DO NOT MODIFY ANYLINE BELLOW THIS EXCEPT YOU KNOW WHAT ITS MEAN ===========
+
 # install updates
 yum update -y
 
 # install the following base packages
 yum install -y  wget git zile nano net-tools docker-1.13.1\
-				bind-utils iptables-services \
-				bridge-utils bash-completion \
-				kexec-tools sos psacct openssl-devel \
-				httpd-tools NetworkManager \
-				python-cryptography python2-pip python-devel  python-passlib \
-				java-1.8.0-openjdk-headless "@Development Tools"
+	bind-utils iptables-services \
+	bridge-utils bash-completion \
+	kexec-tools sos psacct openssl-devel \
+	httpd-tools NetworkManager \
+	python-cryptography python2-pip python-devel  python-passlib \
+	java-1.8.0-openjdk-headless "@Development Tools"
 
 #install epel
 yum -y install epel-release
