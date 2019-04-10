@@ -14,8 +14,8 @@ export VERSION="4.1"
 export METRICS="True"
 export LOGGING="True"
 
-# optional
-export DISK="/dev/sda"
+# docker storage
+#export DISK="/dev/sda"
 
 # ======== WARNING - DO NOT MODIFY ANYLINE BELLOW THIS EXCEPT YOU KNOW WHAT ITS MEAN ===========
 
@@ -52,12 +52,12 @@ yum -y --enablerepo=epel install ansible.rpm
 [ ! -d openshift-ansible ] && git clone https://github.com/openshift/openshift-ansible.git -b release-${VERSION} --depth=1
 
 cat <<EOD > /etc/hosts
-127.0.0.1   localhost
-::1         localhost
-${MASTER}	master console.${DOMAIN}
-${IP_WORKER_1}	worker1
-${IP_WORKER_2}	worker2
-${IP_WORKER_3}	worker3
+127.0.0.1                  localhost
+::1                        localhost
+${IP_MASTER}              master console.${DOMAIN}
+${IP_WORKER_1}             worker1
+${IP_WORKER_2}             worker2
+${IP_WORKER_3}             worker3
 EOD
 
 if [ -z $DISK ]; then 
