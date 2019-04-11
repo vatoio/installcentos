@@ -1,5 +1,5 @@
 #!/bin/bash
-./01-config-update.sh
+source 01-config-update.sh
 
 # ======== WARNING - DO NOT MODIFY ANYLINE BELLOW THIS EXCEPT YOU KNOW WHAT ITS MEAN ===========
 
