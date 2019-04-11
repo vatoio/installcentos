@@ -12,13 +12,13 @@ fi
 
 [ ! -d openshift-ansible ] && git clone https://github.com/openshift/openshift-ansible.git -b release-${VERSION} --depth=1
 
-mkdir -p /etc/origin/master/
-touch /etc/origin/master/htpasswd
-
 envsubst < inventory-template.ini > inventory-tmp.ini
 
 ansible-playbook -i inventory-tmp.ini openshift-ansible/playbooks/prerequisites.yml
 ansible-playbook -i inventory-tmp.ini openshift-ansible/playbooks/deploy_cluster.yml
+
+mkdir -p /etc/origin/master/
+touch /etc/origin/master/htpasswd
 
 htpasswd -b /etc/origin/master/htpasswd ${USERNAME} ${PASSWORD}
 oc adm policy add-cluster-role-to-user cluster-admin ${USERNAME}
