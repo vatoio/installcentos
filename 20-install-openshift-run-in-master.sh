@@ -1,5 +1,7 @@
 #!/bin/bash
 
+./01-config-update.sh
+
 # install the packages for Ansible
 yum -y --enablerepo=epel install pyOpenSSL
 

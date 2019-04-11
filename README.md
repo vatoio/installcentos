@@ -16,6 +16,8 @@ yum install -y unzip
 unzip master.zip
 ```
 
-3. execute `01-config-update.sh` for all worker and master
+3. config `master` and `worker` in `01-config-update.sh`
+
+3. execute `02-install-requirements.sh` for all worker and master
 
 4. execute the installation `20-install-openshift-run-in-master.sh` script on guest machine
