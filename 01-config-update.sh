@@ -1,10 +1,17 @@
 #!/bin/bash
 
 # First you should create ssh key for each node , then ssh-copy-id all node together
-export IP_MASTER="192.168.22.100"
-export IP_WORKER_1="192.168.22.101"
-export IP_WORKER_2="192.168.22.102"
-export IP_WORKER_3="192.168.22.103"
+export MASTER_IP="192.168.22.100"
+export MASTER_HOST_NAME="trunkgateway.local"
+
+export WORKER_1_IP="192.168.22.101"
+export WORKER_1_HOST_NAME="trunk01.local"
+
+export WORKER_2_IP="192.168.22.102"
+export WORKER_2_HOST_NAME="trunk02.local"
+
+export WORKER_3_IP="192.168.22.103"
+export WORKER_3_HOST_NAME="trunk03.local"
 
 export DOMAIN=$(curl -s ipinfo.io/ip).nip.io
 export API_PORT="8443"

@@ -30,10 +30,10 @@ fi
 cat <<EOD > /etc/hosts
 127.0.0.1                  localhost
 ::1                        localhost
-${IP_MASTER}              master console.${DOMAIN}
-${IP_WORKER_1}             worker1
-${IP_WORKER_2}             worker2
-${IP_WORKER_3}             worker3
+${MASTER_IP}              ${MASTER_HOST_NAME} console.${DOMAIN}
+${WORKER_1_IP}             ${WORKER_1_HOST_NAME}
+${WORKER_2_IP}             ${WORKER_2_HOST_NAME}
+${WORKER_3_IP}             ${WORKER_3_HOST_NAME}
 EOD
 
 if [ -z $DISK ]; then 
