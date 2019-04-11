@@ -6,7 +6,7 @@ This install method is targeted for 3 node worker, 1 node master that has a long
 
 ## Installation
 
-1. ssh-keygen and ssh-copy-id for each node and cluster
+1. ssh-keygen and ssh-copy-id to each work and master, P/S: ssh-copy-id to current ssh too
 
 3. Download & unzip
 
