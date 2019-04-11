@@ -11,10 +11,14 @@ export API_PORT="8443"
 export USERNAME="root"
 export PASSWORD="put-your-password-here"
 
+# ansible version
+export ANSIBLE_VERSION="2.7.0"
+
 # openshift-ansible / openshift
-export VERSION="4.0"
+export VERSION="3.11"
 export METRICS="True"
 export LOGGING="True"
+export OPENSHIFT_ORIGIN="https://buildlogs.centos.org/centos/7/paas/x86_64/openshift-origin311"
 
 # docker storage
 #export DISK="/dev/sda"
