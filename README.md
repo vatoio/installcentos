@@ -20,4 +20,4 @@ unzip master.zip
 
 3. execute `02-install-requirements.sh` for all worker and master
 
-4. execute the installation `20-install-openshift-run-in-master.sh` script on guest machine
+4. execute the installation `20-install-openshift.sh` script on guest machine
